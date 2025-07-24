@@ -8,7 +8,8 @@
     - [Educación](./cv/educacion.md)
     - [Habilidades Técnicas](./cv/habilidades.md)
     - [Proyectos Personales](./cv/proyectos.md)
-    - [Idiomas](./cv/idiomas.md)
+    - [Logros](./cv/logros.md)
+    - [Idiomas](./idiomas.md)
     - [Contacto](./cv/contacto.md)
 
 - [Blog](./blog/primer-post.md)
