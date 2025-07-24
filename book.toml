@@ -3,3 +3,6 @@ authors = ["UnicaCode System"]
 language = "en"
 src = "src"
 title = "CV de Edison Enriquez"
+
+[output.html]
+additional-css = ["theme/custom.css"]
