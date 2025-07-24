@@ -1,0 +1,5 @@
+# Ignore the build output directory
+/book
+
+# Ignore environment files
+.env
