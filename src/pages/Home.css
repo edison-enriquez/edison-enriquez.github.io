@@ -352,7 +352,7 @@
 .logo {
   background: transparent;
   color: #50fa7b;
-  font-size: clamp(8px, 2.5vw, 14px);
+  font-size: clamp(10px, 3.5vw, 18px);
   line-height: 1.15;
   margin: 0;
   font-weight: 700;
