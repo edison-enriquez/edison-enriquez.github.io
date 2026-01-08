@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
 import './BlogPost.css';
 
 const BlogPost = () => {
@@ -92,8 +93,9 @@ const BlogPost = () => {
           <span className="post-author">por {post.author}</span>
         </div>
 
-        
-        <pre className="post-markdown">{post.content}</pre>
+        <div className="post-markdown">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
         
         <div className="post-navigation">
           <Link to="/blog" className="nav-button">
