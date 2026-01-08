@@ -192,7 +192,7 @@
   color: #fbbf24;
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
 }
@@ -202,6 +202,8 @@
   font-weight: 800;
   font-size: 1.4rem;
   text-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+  flex-shrink: 0;
+  line-height: 1.3rem;
 }
 
 .terminal-entry-meta {
