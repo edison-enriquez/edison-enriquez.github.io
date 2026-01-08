@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './BlogPost.css';
 
 const BlogPost = () => {
@@ -94,7 +96,40 @@ const BlogPost = () => {
         </div>
 
         <div className="post-markdown">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '');
+                const language = match ? match[1] : '';
+                
+                return !inline && language ? (
+                  <SyntaxHighlighter
+                    style={vscDarkPlus}
+                    language={language}
+                    PreTag="div"
+                    customStyle={{
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      border: '1px solid rgba(100, 255, 218, 0.15)',
+                      borderRadius: '8px',
+                      padding: '20px',
+                      fontSize: '0.9rem',
+                      margin: '16px 0',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+                    }}
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
         
         <div className="post-navigation">
