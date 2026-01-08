@@ -1,0 +1,640 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+.home {
+  height: 100%;
+  padding-bottom: 20px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* .home-layout {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1600px;
+  padding: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+} */
+
+/* OLED Display Simulator */
+.oled-container {
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.oled-screen {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid #333;
+}
+
+.oled-border {
+  background: #000;
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow: 
+    inset 0 0 15px rgba(0, 255, 255, 0.15),
+    0 0 15px rgba(0, 255, 255, 0.25);
+}
+
+.oled-display {
+  background: #000;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #00ffff;
+  min-height: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.oled-display::-webkit-scrollbar {
+  width: 6px;
+}
+
+.oled-display::-webkit-scrollbar-track {
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.oled-display::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.oled-display::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 255, 0.03) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+.oled-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  margin-bottom: 15px;
+}
+
+.oled-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  letter-spacing: 2px;
+}
+
+.oled-status {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.oled-menu {
+  margin: 15px 0;
+}
+
+.oled-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.oled-menu-item.selected {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: #00ffff;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.4),
+    inset 0 0 8px rgba(0, 255, 255, 0.1);
+}
+
+.menu-cursor {
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.menu-label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.oled-footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.oled-controls {
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.oled-controls span {
+  padding: 3px 6px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.terminal-container {
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* OLED CV Content Styles */
+.oled-cv-content {
+  margin: 15px 0;
+  min-height: 150px;
+}
+
+.cv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-line {
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.cv-line.cv-bold {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cv-line.cv-small {
+  font-size: 11px;
+}
+
+.cv-line.cv-muted {
+  opacity: 0.7;
+}
+
+.cv-bullet {
+  margin-right: 8px;
+  color: #00ffff;
+}
+
+.terminal-window {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.terminal-header {
+  background: linear-gradient(to bottom, #3a3a3a 0%, #2d2d2d 100%);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.terminal-button.close {
+  background: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background: #27c93f;
+}
+
+.terminal-title {
+  color: #a0a0a0;
+  font-size: 13px;
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+.terminal-body {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.terminal-line {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.terminal-line.output {
+  color: #e4e4e4;
+  margin-bottom: 20px;
+}
+
+/* Oh My Zsh Style Prompt */
+.prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.prompt-arrow {
+  color: #50fa7b;
+  font-size: 16px;
+}
+
+.prompt-dir {
+  color: #8be9fd;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: #f8f8f2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  flex: 1;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  caret-color: #50fa7b;
+}
+
+/* Screenfetch Layout */
+.screenfetch-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  margin: 20px 0;
+  align-items: start;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .screenfetch-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+  }
+}
+
+.logo-art {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: fit-content;
+}
+
+.logo {
+  background: transparent;
+  color: #50fa7b;
+  font-size: clamp(8px, 2.5vw, 14px);
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 700;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  text-shadow: 
+    0 0 5px rgba(80, 250, 123, 0.8),
+    0 0 10px rgba(80, 250, 123, 0.5);
+}
+
+.system-info {
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 1024px) {
+  .system-info {
+    max-width: 100%;
+  }
+}
+
+.info-line {
+  margin: 6px 0;
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+
+.info-label {
+  color: #ff79c6;
+  font-weight: 600;
+}
+
+.info-sep {
+  color: #f8f8f2;
+  margin: 0 4px;
+}
+
+.info-value {
+  color: #f1fa8c;
+}
+
+.info-separator {
+  color: #6272a4;
+  margin: 10px 0;
+  font-size: clamp(11px, 1.3vw, 13px);
+  opacity: 0.6;
+}
+
+.color-palette {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.color-block {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+}
+
+.color-0 { background: #282a36; }
+.color-1 { background: #ff5555; }
+.color-2 { background: #50fa7b; }
+.color-3 { background: #f1fa8c; }
+.color-4 { background: #bd93f9; }
+.color-5 { background: #ff79c6; }
+.color-6 { background: #8be9fd; }
+.color-7 { background: #f8f8f2; }
+
+.intro-text {
+  margin-top: 20px;
+  border-top: 1px solid #44475a;
+  padding-top: 15px;
+}
+
+.welcome-prompt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.prompt-user {
+  color: #50fa7b;
+  font-weight: 600;
+}
+
+.prompt-sep {
+  color: #f8f8f2;
+}
+
+.prompt-path {
+  color: #8be9fd;
+  font-weight: 600;
+}
+
+.prompt-dollar {
+  color: #f8f8f2;
+}
+
+.welcome-cmd {
+  color: #bd93f9;
+}
+
+.welcome-output {
+  color: #f1fa8c;
+  margin: 0;
+  font-size: 13px;
+}
+
+/* Help Output */
+.help-output {
+  background: rgba(68, 71, 90, 0.2);
+  border-radius: 6px;
+  padding: 15px;
+  border-left: 3px solid #bd93f9;
+}
+
+.help-header {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #44475a;
+}
+
+.help-title {
+  color: #bd93f9;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.help-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.help-table td {
+  padding: 6px 8px;
+}
+
+.cmd-name {
+  color: #50fa7b;
+  font-weight: 600;
+  width: 120px;
+}
+
+.cmd-sep {
+  color: #6272a4;
+  width: 30px;
+  text-align: center;
+}
+
+.cmd-desc {
+  color: #f8f8f2;
+}
+
+/* About Output */
+.about-output {
+  background: rgba(68, 71, 90, 0.2);
+  border-radius: 6px;
+  padding: 15px;
+  border-left: 3px solid #50fa7b;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #44475a;
+}
+
+.about-icon {
+  font-size: 24px;
+}
+
+.about-title {
+  color: #50fa7b;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.about-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.about-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #f8f8f2;
+}
+
+.about-item .bullet {
+  color: #ff79c6;
+  font-weight: 700;
+}
+
+.about-item .label {
+  color: #8be9fd;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+/* Contact Output */
+.contact-output {
+  background: rgba(68, 71, 90, 0.2);
+  border-radius: 6px;
+  padding: 15px;
+  border-left: 3px solid #8be9fd;
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #44475a;
+}
+
+.contact-icon {
+  font-size: 24px;
+}
+
+.contact-title {
+  color: #8be9fd;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-label {
+  color: #ff79c6;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.contact-link {
+  color: #50fa7b;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.contact-link:hover {
+  color: #f1fa8c;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .screenfetch-layout {
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 7px;
+    line-height: 7px;
+  }
+  
+  .system-info {
+    min-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}

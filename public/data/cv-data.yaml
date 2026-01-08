@@ -1,0 +1,145 @@
+personal:
+  name: "Edison Enríquez"
+  title: "Ingeniero Electrónico | Candidato a Doctor"
+  email: "ferneyenriquez@gmail.com"
+  linkedin: "linkedin.com/in/edison-enriquez"
+  resume_pdf: "/Resume_Edison_Enriquez.pdf"
+
+summary: |
+  Ingeniero Electrónico con maestría y candidatura a doctor en Ingeniería Electrónica, con una sólida formación académica y experiencia docente universitaria desde 2014, especializándome en la instrucción de herramientas de diseño electrónico, dispositivos electrónicos, sistemas digitales, sistemas de control automático y circuitos eléctricos/electrónicos. Dedicado al desarrollo académico de los estudiantes mediante la promoción del aprendizaje práctico y basado en la resolución de problemas. Capacidad demostrada para guiar a grupos de 10 a 15 estudiantes de pregrado en entornos de laboratorio, fomentando una profunda comprensión de los conceptos técnicos y la aplicación de tecnologías relevantes. Apasionado por la enseñanza, con sólidas habilidades de comunicación y un enfoque proactivo hacia la innovación educativa.
+
+experience:
+  - title: "Profesor de tiempo completo"
+    company: "Institución Universitaria Antonio José Camacho"
+    location: "Cali, CO"
+    period: "Ago 2024 – Presente"
+    responsibilities:
+      - "Algoritmos y Programación, C/C++, Arduino, Internet de las Cosas (IoT)"
+      - "Ciberseguridad, ISO 27001, NIST, ISO 31000, MITRE Framework, Gestión de Riesgos, Hacking Ético, Pruebas de Penetración, Código Limpio, Introducción a la Criptografía"
+      - "Sistemas de microcontroladores, Programación en C++, Sistemas embebidos en C++, Patrones de diseño, Ingeniería de software embebido, Ensamblador"
+      - "Miembro del Comité para el Diseño de un Programa de Tecnología de Redes y Ciberseguridad"
+      - "Miembro del Comité de Acreditación de la Tecnología en Electrónica Industrial"
+  
+  - title: "Profesor Adjunto"
+    company: "Institución Universitaria Antonio José Camacho"
+    location: "Cali, CO"
+    period: "Feb 2023 – Jul 2024"
+    hours: "12 horas/semana"
+    responsibilities:
+      - "Java, Programación Orientada a Objetos (POO), patrones de diseño, Código Limpio"
+      - "Algoritmos y Programación, C/C++, RAII, Arduino, Internet de las Cosas (IoT)"
+      - "Ciberseguridad, ISO 27001, NIST, ISO 31000, MITRE Framework, Gestión de Riesgos, Hacking Ético, Pruebas de Penetración, Código Limpio, Introducción a la Criptografía"
+      - "Comunicaciones Electrónicas, Comunicación RF, Redes"
+      - "Sistemas de microcontroladores, Programación en C++, Sistemas embebidos en C++, Patrones de diseño, Ingeniería de software embebido, Ensamblador"
+  
+  - title: "Profesor Adjunto"
+    company: "Universidad del Valle"
+    location: "Cali, CO"
+    period: "Ago 2017 – Presente"
+    hours: "7 horas/semana"
+    responsibilities:
+      - "Tutor de 10-15 estudiantes de ingeniería de pregrado en herramientas de diseño para tecnología electrónica"
+      - "Tutor de 10-15 estudiantes de ingeniería de pregrado en dispositivos electrónicos"
+  
+  - title: "Tutor"
+    company: "Universidad del Valle"
+    location: "Cali, CO"
+    period: "Ago 2014 – May 2016"
+    hours: "6 horas/semana"
+    responsibilities:
+      - "Tutor de 10-15 estudiantes de ingeniería de pregrado en Laboratorios de Sistemas Digitales, Laboratorio de sistemas de control automático y Laboratorio de Circuitos Electrónicos/Eléctricos"
+
+other_experience:
+  - title: "Ingeniero de Desarrollo"
+    company: "Madrigral Industries"
+    location: "Pasto, CO"
+    period: "Ene 2019 – Jun 2019"
+    hours: "6 horas/semana"
+    responsibilities:
+      - "Desarrollo del sistema de control para las diferentes máquinas de envasado automático basado en sistemas PLC y arduino"
+      - "Reemplazo y adaptación del sistema de control y comunicación para una máquina de envasado automático importada"
+  
+  - title: "Instructor Adjunto"
+    company: "Corporación Universitaria Remington"
+    location: "Cali, CO"
+    period: "Nov 2022 – Dic 2022"
+    hours: "6 horas/semana"
+    responsibilities:
+      - "Seminario de Ciberseguridad - Pentesting"
+
+education:
+  - degree: "Doctorado (c), Ingeniería Electrónica y Eléctrica"
+    institution: "Universidad del Valle"
+    location: "Cali, CO"
+    status: "Graduando"
+    school: "School of Electrical and Electronic Engineering"
+    courses: "Gestión de la demanda en redes inteligentes, mercados locales de energía, energía transactiva, Internet de la energía, aprendizaje por refuerzo, contratos inteligentes y blockchain, tokenización y gestión segura y almacenamiento de activos digitales, creador de mercado automatizado."
+  
+  - degree: "M.S.C., Ingeniería Electrónica"
+    institution: "Universidad del Valle"
+    location: "Cali, CO"
+    graduation: "Dic 2018"
+    school: "School of Electrical and Electronic Engineering"
+    courses: "Lenguajes de diseño de hardware y lógica programable, arquitectura de computadoras, reconfiguración parcial dinámica en FPGAs, aplicación web con Ruby on Rails y Redis."
+  
+  - degree: "B.S.E., Ingeniería Electrónica"
+    institution: "Universidad del Valle"
+    location: "Cali, CO"
+    graduation: "Jun 2014"
+    school: "School of Electrical and Electronic Engineering"
+    courses: "Lenguajes de diseño de hardware y lógica programable, procesamiento de imágenes, redes neuronales artificiales."
+
+skills:
+  analysis:
+    - "Python"
+    - "Pandas"
+    - "Numpy"
+    - "SQL"
+  
+  design_tools:
+    - "FUSION 360"
+    - "LabVIEW"
+    - "MATLAB"
+    - "Microsoft Office"
+    - "Latex"
+  
+  programming:
+    - "Python"
+    - "C/C++"
+    - "Rust"
+    - "Solidity"
+    - "Java"
+    - "Lenguajes HDL (Verilog y VHDL)"
+  
+  certifications:
+    - "Ethical Hacker (Sep 2023)"
+    - "Junior Cybersecurity Analyst Career Path - CISCO (Sep 2023)"
+    - "Google Cybersecurity Professional Certificate"
+    - "Lectura y Escritura en el Aula Universitaria"
+  
+  languages:
+    - "Inglés (B1)"
+
+projects:
+  - title: "Desarrollo de una plataforma para la implementación de didácticas de aprendizaje activo en ingeniería electrónica basadas en la iniciativa CDIO"
+    role: "Asistente de Investigación"
+    period: "Sep 2016 - Mar 2017"
+    description: "Se diseñó e implementó un laboratorio de experimentación remota como un espacio de trabajo en el marco de la iniciativa CDIO."
+  
+  - title: "Módulo de entrenamiento basado en FPGA con analizador lógico embebido"
+    role: "Asistente de Investigación"
+    period: "Sep 2011 - Mar 2013"
+    description:
+      - "Configuración del sistema vía USB desarrollado en Java con la librería libusb desde el servidor (Java, Libusb)."
+      - "Desarrollo de un sistema embebido basado en FPGA y Microcontrolador (Microchip Microcontroller, Xilinx FPGA, FreeRTOS)."
+
+achievements:
+  - title: "Becas (Univalle)"
+    period: "Ago 2014 – Dic 2016"
+    description: "Beca para estudios de Maestría y Doctorado."
+  
+  - title: "Incentivos Académicos (Univalle)"
+    items:
+      - "Reconocimiento que la Universidad del Valle otorga cada semestre a los mejores promedios."
+      - "Primer puesto en el séptimo semestre."
+      - "Cuarto puesto en el décimo semestre."

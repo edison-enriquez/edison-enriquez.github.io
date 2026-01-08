@@ -1,0 +1,19 @@
+posts:
+  - id: 1
+    title: "Mi Primer Post"
+    date: "2026-01-08"
+    excerpt: "Este es el comienzo de mi nuevo blog."
+    content: |
+      # Mi Primer Post
+      
+      Este es el comienzo de mi nuevo blog. ¡Pronto publicaré más contenido!
+      
+      ## Por qué crear un blog
+      
+      Un espacio para compartir conocimientos sobre:
+      - Ingeniería Electrónica
+      - Ciberseguridad
+      - Programación
+      - Educación
+      
+      ¡Mantente atento a futuras publicaciones!

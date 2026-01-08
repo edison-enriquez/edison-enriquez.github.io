@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+.blog-post {
+  animation: fadeIn 0.5s ease-in;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.post-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.5em;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Terminal Window Styling - Matching CV & Blog */
+.terminal-window {
+  background: linear-gradient(135deg, #1a1f3a 0%, #0d1117 100%);
+  border-radius: 12px;
+  box-shadow:
+    0 20px 60px rgba(0, 255, 65, 0.15),
+    0 0 0 1px rgba(0, 255, 65, 0.1);
+  overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.terminal-header {
+  background: linear-gradient(to bottom, #2a3051 0%, #1e2438 100%);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.terminal-button {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.terminal-button.close {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+  box-shadow: 0 2px 8px rgba(255, 95, 86, 0.3);
+}
+
+.terminal-button.minimize {
+  background: linear-gradient(135deg, #ffd93d 0%, #ffbd2e 100%);
+  box-shadow: 0 2px 8px rgba(255, 189, 46, 0.3);
+}
+
+.terminal-button.maximize {
+  background: linear-gradient(135deg, #6bcf7f 0%, #27c93f 100%);
+  box-shadow: 0 2px 8px rgba(39, 201, 63, 0.3);
+}
+
+.terminal-button:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+}
+
+.terminal-title {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  flex: 1;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.terminal-commands {
+  background: linear-gradient(to bottom, #0d1117 0%, #161b22 100%);
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.command-line {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.command-line .prompt {
+  color: var(--accent);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.command-line .command {
+  color: #64ffda;
+  flex: 1;
+  font-weight: 400;
+}
+
+.cursor-blink {
+  animation: blink 1.2s step-end infinite;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.post-not-found {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, #0d1117 0%, #161b22 100%);
+}
+
+.post-not-found h2 {
+  color: var(--accent);
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.post-content {
+  padding: 32px 24px;
+  background: linear-gradient(to bottom, #0d1117 0%, #161b22 100%);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #9ca3af;
+  margin-bottom: 32px;
+  padding: 10px 18px;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: rgba(0, 255, 65, 0.02);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background-color: rgba(0, 255, 65, 0.1);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(0, 255, 65, 0.2);
+}
+
+.post-header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid rgba(0, 255, 65, 0.2);
+  position: relative;
+}
+
+.post-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), transparent);
+}
+
+.post-title {
+  color: var(--accent);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.post-meta {
+  display: flex;
+  gap: 15px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.post-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 255, 65, 0.05);
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 65, 0.15);
+}
+
+.post-body {
+  margin: 40px 0;
+  line-height: 1.8;
+}
+
+.post-markdown {
+  color: #d1d5db;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.3) 0%, rgba(13, 17, 23, 0.3) 100%);
+  padding: 28px;
+  border: 1px solid rgba(0, 255, 65, 0.15);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(0, 255, 65, 0.08);
+}
+
+.post-markdown h1,
+.post-markdown h2,
+.post-markdown h3 {
+  color: var(--accent);
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.post-markdown h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid rgba(0, 255, 65, 0.2);
+  padding-bottom: 12px;
+}
+
+.post-markdown h2 {
+  font-size: 1.6rem;
+}
+
+.post-markdown h3 {
+  font-size: 1.3rem;
+}
+
+.post-markdown ul,
+.post-markdown ol {
+  margin-left: 24px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.post-markdown li {
+  margin-bottom: 10px;
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+.post-markdown p {
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+.post-markdown code {
+  background-color: rgba(0, 255, 65, 0.1);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.post-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 2px solid rgba(0, 255, 65, 0.2);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .post-title {
+    font-size: 2rem;
+  }
+
+  .post-content {
+    padding: 20px 16px;
+  }
+
+  .post-markdown {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

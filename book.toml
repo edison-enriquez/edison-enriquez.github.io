@@ -1,8 +1,0 @@
-[book]
-authors = ["UnicaCode System"]
-language = "en"
-src = "src"
-title = "Edison Enriquez"
-
-[output.html]
-additional-css = ["theme/custom.css"]
