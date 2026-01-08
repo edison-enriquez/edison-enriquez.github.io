@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import yaml from 'js-yaml';
-import { FaCalendar, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import './Blog.css';
 
 const Blog = () => {
@@ -9,17 +8,53 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data/blog-posts.yaml')
-      .then((response) => response.text())
-      .then((text) => {
-        const data = yaml.load(text);
-        setPosts(data.posts || []);
+    // Cargar automáticamente los posts desde la carpeta /public/blog/
+    const loadPosts = async () => {
+      try {
+        // Lista de archivos markdown en /public/blog/
+        const postFiles = import.meta.glob('/public/blog/*.md', { query: '?raw', import: 'default' });
+        const loadedPosts = [];
+
+        for (const path in postFiles) {
+          const content = await postFiles[path]();
+          const fileName = path.split('/').pop().replace('.md', '');
+          
+          // Extraer frontmatter
+          const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+          if (frontmatterMatch) {
+            const frontmatter = {};
+            const lines = frontmatterMatch[1].split('\n');
+            
+            lines.forEach(line => {
+              const match = line.match(/^(\w+):\s*"?(.+?)"?$/);
+              if (match) {
+                frontmatter[match[1]] = match[2];
+              }
+            });
+
+            loadedPosts.push({
+              id: fileName,
+              slug: frontmatter.slug || fileName,
+              title: frontmatter.title || 'Sin título',
+              date: frontmatter.date || 'Sin fecha',
+              excerpt: frontmatter.excerpt || '',
+              author: frontmatter.author || 'Edison Enríquez',
+              content: content
+            });
+          }
+        }
+
+        // Ordenar por fecha (más recientes primero)
+        loadedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setPosts(loadedPosts);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error loading blog posts:', error);
         setLoading(false);
-      });
+      }
+    };
+
+    loadPosts();
   }, []);
 
   if (loading) {
@@ -32,61 +67,43 @@ const Blog = () => {
 
   return (
     <div className="blog">
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-buttons">
-            <span className="terminal-button close"></span>
-            <span className="terminal-button minimize"></span>
-            <span className="terminal-button maximize"></span>
-          </div>
-          <div className="terminal-title">edison@enriquez: ~/blog</div>
+      <div className="terminal-command-block">
+        <div className="cmd-line">
+          <span className="prompt">blog</span>
+          <span className="cmd">ls</span>
+          <span className="cmd-arg">--all</span>
         </div>
-        <div className="terminal-command-bar">
-          <div className="command-line">
-            <span className="prompt-arrow">➜</span>
-            <span className="prompt-dir">blog</span>
-            <span className="git-branch">git:(<span className="branch-name">main</span>)</span>
-            <span className="command">ls -lah --color=auto</span>
-          </div>
-        </div>
+      </div>
 
-        <div className="blog-content">
-          <div className="blog-header-section">
-            <h1 className="page-title">
-              Blog
-            </h1>
-            <p className="page-subtitle">Artículos sobre tecnología, ingeniería y educación</p>
+      <div className="posts-grid">
+        {posts.length === 0 ? (
+          <div className="no-posts">
+            <p>No hay posts disponibles aún...</p>
           </div>
-
-          <div className="posts-grid">
-            {posts.length === 0 ? (
-              <div className="no-posts">
-                <p className="no-posts-text">No hay posts disponibles aún...</p>
-                <p className="no-posts-subtext">¡Pronto habrá contenido nuevo!</p>
+        ) : (
+          posts.map((post) => (
+            <article key={post.id} className="post-card">
+              <div className="post-header">
+                <span className="prompt">cat</span>
+                <span className="cmd">posts/</span>
+                <Link to={`/blog/${post.id}`} className="post-title-link">
+                  {post.title}
+                </Link>
               </div>
-            ) : (
-              posts.map((post) => (
-                <article key={post.id} className="post-card">
-                  <div className="post-header">
-                    <div className="post-header-content">
-                      <h2 className="post-title">{post.title}</h2>
-                      <div className="post-meta">
-                        <span className="post-date">
-                          {post.date}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="post-excerpt">{post.excerpt}</p>
-                  <Link to={`/blog/${post.id}`} className="read-more">
-                    <span>Leer más</span>
-                    <FaArrowRight />
-                  </Link>
-                </article>
-              ))
-            )}
-          </div>
-        </div>
+              <div className="post-content-area">
+                <div className="post-meta">
+                  <span className="post-date">{post.date}</span>
+                  <span className="post-author">{post.author}</span>
+                </div>
+                <p className="post-excerpt">{post.excerpt}</p>
+                <Link to={`/blog/${post.id}`} className="read-more">
+                  <span>Leer más</span>
+                  <FaArrowRight />
+                </Link>
+              </div>
+            </article>
+          ))
+        )}
       </div>
     </div>
   );

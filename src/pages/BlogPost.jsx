@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import yaml from 'js-yaml';
 import { FaArrowLeft } from 'react-icons/fa';
 import './BlogPost.css';
 
@@ -10,18 +9,50 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data/blog-posts.yaml')
-      .then((response) => response.text())
-      .then((text) => {
-        const data = yaml.load(text);
-        const foundPost = data.posts.find((p) => p.id === parseInt(id));
-        setPost(foundPost);
+    // Cargar el post específico desde /public/blog/
+    const loadPost = async () => {
+      try {
+        const postFiles = import.meta.glob('/public/blog/*.md', { query: '?raw', import: 'default' });
+        
+        for (const path in postFiles) {
+          const fileName = path.split('/').pop().replace('.md', '');
+          
+          if (fileName === id || path.includes(id)) {
+            const content = await postFiles[path]();
+            
+            // Extraer frontmatter y contenido
+            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+            if (frontmatterMatch) {
+              const frontmatter = {};
+              const lines = frontmatterMatch[1].split('\n');
+              
+              lines.forEach(line => {
+                const match = line.match(/^(\w+):\s*"?(.+?)"?$/);
+                if (match) {
+                  frontmatter[match[1]] = match[2];
+                }
+              });
+
+              setPost({
+                id: fileName,
+                slug: frontmatter.slug || fileName,
+                title: frontmatter.title || 'Sin título',
+                date: frontmatter.date || 'Sin fecha',
+                author: frontmatter.author || 'Edison Enríquez',
+                content: frontmatterMatch[2].trim()
+              });
+            }
+            break;
+          }
+        }
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error loading blog post:', error);
         setLoading(false);
-      });
+      }
+    };
+
+    loadPost();
   }, [id]);
 
   if (loading) {
@@ -34,10 +65,10 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="terminal-window">
+      <div className="blog-post">
         <div className="post-not-found">
           <h2>Post no encontrado</h2>
-          <Link to="/blog" className="btn">
+          <Link to="/blog" className="nav-button">
             <FaArrowLeft /> Volver al blog
           </Link>
         </div>
@@ -47,47 +78,27 @@ const BlogPost = () => {
 
   return (
     <div className="blog-post">
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-buttons">
-            <span className="terminal-button close"></span>
-            <span className="terminal-button minimize"></span>
-            <span className="terminal-button maximize"></span>
-          </div>
-          <div className="terminal-title">edison@enriquez: ~/blog/{post.id}.md</div>
+      <div className="terminal-command-block">
+        <div className="cmd-line">
+          <span className="prompt">blog</span>
+          <span className="cmd">cat</span>
+          <span className="cmd-arg">{post.title}</span>
         </div>
-        <div className="terminal-commands">
-          <div className="command-line">
-            <span className="prompt">edison@enriquez:~/blog$</span>
-            <span className="command">cat {post.id}.md<span className="cursor-blink">_</span></span>
-          </div>
+      </div>
+
+      <div className="post-content">
+        <div className="post-meta">
+          <span className="post-date">{post.date}</span>
+          <span className="post-author">por {post.author}</span>
         </div>
 
-        <div className="post-content">
-          <Link to="/blog" className="back-link">
+        
+        <pre className="post-markdown">{post.content}</pre>
+        
+        <div className="post-navigation">
+          <Link to="/blog" className="nav-button">
             <FaArrowLeft /> Volver al blog
           </Link>
-
-          <article>
-            <header className="post-header">
-              <h1 className="post-title">{post.title}</h1>
-              <div className="post-meta">
-                <span className="post-date">
-                  {post.date}
-                </span>
-              </div>
-            </header>
-
-            <div className="post-body">
-              <pre className="post-markdown">{post.content}</pre>
-            </div>
-          </article>
-
-          <div className="post-footer">
-            <Link to="/blog" className="btn">
-              <FaArrowLeft /> Volver al blog
-            </Link>
-          </div>
         </div>
       </div>
     </div>
