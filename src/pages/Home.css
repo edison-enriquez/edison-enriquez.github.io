@@ -467,10 +467,7 @@
 
 /* Help Output */
 .help-output {
-  background: rgba(68, 71, 90, 0.2);
-  border-radius: 6px;
-  padding: 15px;
-  border-left: 3px solid #bd93f9;
+  margin: 10px 0;
 }
 
 .help-header {
@@ -512,10 +509,7 @@
 
 /* About Output */
 .about-output {
-  background: rgba(68, 71, 90, 0.2);
-  border-radius: 6px;
-  padding: 15px;
-  border-left: 3px solid #50fa7b;
+  margin: 10px 0;
 }
 
 .about-header {
@@ -563,10 +557,7 @@
 
 /* Contact Output */
 .contact-output {
-  background: rgba(68, 71, 90, 0.2);
-  border-radius: 6px;
-  padding: 15px;
-  border-left: 3px solid #8be9fd;
+  margin: 10px 0;
 }
 
 .contact-header {

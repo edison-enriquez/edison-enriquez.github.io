@@ -192,9 +192,9 @@ const Home = () => {
               </div>
               <div className="about-items">
                 <div className="about-item"><span className="bullet">-</span> <span className="label">Role:</span> Ingeniero Electrónico</div>
-                <div className="about-item"><span className="bullet">-</span> <span className="label">Education:</span> Candidato a M.Sc. en Ingeniería Electrónica</div>
+                <div className="about-item"><span className="bullet">-</span> <span className="label">Education:</span> Magister en Ingenieria Electronica y Doctor en Ingenieria con enfasis en Ingeniería Electrica y Electrónica</div>
                 <div className="about-item"><span className="bullet">-</span> <span className="label">Position:</span> Profesor Universitario</div>
-                <div className="about-item"><span className="bullet">-</span> <span className="label">Specialty:</span> Especialista en Ciberseguridad</div>
+                <div className="about-item"><span className="bullet">-</span> <span className="label">Specialty:</span> Especialista en Sistemas Embebidos + Ciberseguridad - </div>
               </div>
             </div>
           )
